@@ -6,9 +6,9 @@ from templates.generate_rust_template import RustTemplate
 import sys
 
 path = sys.argv[1]
-filename = sys.argv[2]
+task_name = sys.argv[2]
 
-CSharpTemplate(path, filename)
-HaskellTemplate(path, filename)
-PythonTemplate(path, filename)
-RustTemplate(path, filename, True)
+CSharpTemplate(path + task_name + "/", "solution")
+HaskellTemplate(path + task_name + "/", "solution")
+PythonTemplate(path + task_name + "/", "solution")
+RustTemplate(path + task_name + "/", "solution", True)
