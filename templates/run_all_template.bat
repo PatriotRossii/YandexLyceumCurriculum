@@ -1,5 +1,6 @@
 csc solution.cs >nul 2>&1
 solution.exe
+del /f solution.exe
 
 ghc solution.hs >nul 2>&1
 solution.exe
