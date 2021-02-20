@@ -1,0 +1,15 @@
+Cargo.lock
+.rustc_info.json
+*.d
+.cargo-lock
+*.exe
+*.TAG
+*.pdb
+bin-solution
+*.timestamp
+*.o
+*.bin
+**/__pycache__
+*.lock
+dep-bin-solution
+bin-solution.json
