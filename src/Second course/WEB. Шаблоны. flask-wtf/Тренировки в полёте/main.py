@@ -1,7 +1,7 @@
 from flask import Flask, render_template, url_for
 import random
 
-app = Flask(__name__, template_folder="")
+app = Flask(__name__)
 
 
 @app.route("/training/<prof>")

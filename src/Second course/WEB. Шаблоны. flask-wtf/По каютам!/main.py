@@ -1,6 +1,6 @@
 from flask import Flask, render_template
 
-app = Flask(__name__, template_folder="")
+app = Flask(__name__)
 
 
 @app.route('/index/<title>')
@@ -14,7 +14,7 @@ def answer():
     user_list = [{"name": "Ридли", "surname": "Скот"}, {"name": "Энди", "surname": "Уир"},
                  {"name": "Марк", "surname": "Уотни"}, {"name": "Венката", "surname": "Капур"},
                  {"name": "Тедди", "surname": "Сандерс"}, {"name": "Шон", "surname": "Бин"}]
-    return render_template('training.html', title="Распределение", user_list=user_list)
+    return render_template('distribution.html', title="Распределение", user_list=user_list)
 
 
 if __name__ == '__main__':
