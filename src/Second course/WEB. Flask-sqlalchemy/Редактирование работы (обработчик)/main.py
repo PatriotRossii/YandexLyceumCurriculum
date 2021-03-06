@@ -37,9 +37,7 @@ def edit_jobs(id):
             if jobs.is_finished:
                 jobs.end_date = datetime.datetime.now()
 
-            db_sess.merge(jobs)
             db_sess.commit()
-
             return redirect('/')
         else:
             abort(404)
