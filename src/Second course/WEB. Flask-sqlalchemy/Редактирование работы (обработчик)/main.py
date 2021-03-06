@@ -12,8 +12,8 @@ def edit_jobs(id):
     if request.method == "GET":
         db_sess = db_session.create_session()
         jobs = db_sess.query(Jobs).filter((Jobs.id == id,
-                                           (Jobs.team_leader == current_user.id) | current_user.id == 1)
-                                          ).first()
+                                           (Jobs.team_leader == current_user.id | current_user.id == 1)
+                                          )).first()
         if jobs:
             form.team_leader = jobs.team_leader
             form.job = jobs.job
@@ -25,15 +25,14 @@ def edit_jobs(id):
     if form.validate_on_submit():
         db_sess = db_session.create_session()
         jobs = db_sess.query(Jobs).filter((Jobs.id == id,
-                                           (Jobs.team_leader == current_user.id) | current_user.id == 1)
-                                          ).first()
+                                           (Jobs.team_leader == current_user.id | current_user.id == 1)
+                                          )).first()
         if jobs:
             jobs.team_leader = form.team_leader.data
             jobs.job = form.job.data
             jobs.work_size = form.work_size.data
             jobs.collaborators = form.collaborators.data
             jobs.is_finished = form.is_finished.data
-
             if jobs.is_finished:
                 jobs.end_date = datetime.datetime.now()
 
