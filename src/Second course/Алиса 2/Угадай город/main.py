@@ -100,6 +100,9 @@ def handle_dialog(res, req):
             elif 'нет' in req['request']['nlu']['tokens']:
                 res['response']['text'] = 'Ну и ладно!'
                 res['end_session'] = True
+            elif req['request']['original_utterance'].lower() == 'покажи город на карте':
+                res['response']['text'] = f"Как изволите!"
+                return
             else:
                 res['response']['text'] = 'Не поняла ответа! Так да или нет?'
                 res['response']['buttons'] += [
@@ -141,6 +144,13 @@ def play_game(res, req):
             # если да, то добавляем город к sessionStorage[user_id]['guessed_cities'] и
             # отправляем пользователя на второй круг. Обратите внимание на этот шаг на схеме.
             res['response']['text'] = 'Правильно! Сыграем ещё?'
+            res['response']['buttons'] += [
+                {
+                    'title': 'Покажи город на карте',
+                    'url': f'https://yandex.ru/maps/?mode=search&text={city}',
+                    'hide': True
+                }
+            ]
             sessionStorage[user_id]['guessed_cities'].append(city)
             sessionStorage[user_id]['game_started'] = False
             return
@@ -186,4 +196,4 @@ def get_first_name(req):
 
 
 if __name__ == '__main__':
-    app.run(port=80)
+    app.run()
